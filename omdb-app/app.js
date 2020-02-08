@@ -15,8 +15,12 @@ let pokeList = []
                     (data) => {
                     pokeList.push(data)
                     if (pokeList.length == (i - 1)) {
-                    
-                    console.log(pokeList[1].sprites.front_default);
+                        let x = pokeList.length
+                        // console.log(pokeList.length);
+                    for (var j = 0; j < x; j++) {
+                        console.log(pokeList[j].sprites.front_default);
+                    }
+                    // console.log(pokeList[1].sprites.front_default);
                     // return pokeList
                     }
 
