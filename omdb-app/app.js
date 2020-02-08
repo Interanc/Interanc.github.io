@@ -5,7 +5,7 @@ $(() => {
     let $pokemonWrapper = $("<div>").addClass("pokeWrap")
     let $pokemonHolder = $("<div>").addClass("pokeHolder")
     /* INITAL API CALL TO GET ALL THE VARIABLES.
-        VARIABLES ARE NESTED IN A SECOND API.
+    VARIABLES ARE NESTED IN A SECOND API.
     */
     $.ajax({
         url:'https://pokeapi.co/api/v2/pokemon?limit=30'
@@ -14,6 +14,7 @@ $(() => {
             /*
             SECOND API TRAVERSAL. ITERATE OVER THE ARRAY TO GET THE IMAGES THAT DISPLAY.
             */
+
             const pokemonList = () => {
                 for (var i = 1; i < data.results.length; i++) {
                     $.ajax({
@@ -21,50 +22,54 @@ $(() => {
                     }).then(
                         (data) => {
                             pokeList.push(data)
-            //ONLY OUTPUT THE FINAL RESULT
+                            //ONLY OUTPUT THE FINAL RESULT
                             if (pokeList.length == (i - 1)) {
-//TESTER CODE
-// console.log(pokeList[i]);
-
-
-
-
-//TESTER CODE END
+                                //TESTER CODE
+                                // console.log(pokeList[i]);
+                                //TESTER CODE END
                                 let x = pokeList.length
-            //THEN ITERATE TO GRAB AND PLACE IMAGES
-                                for (var j = 0; j < x; j++) {
-                                    let $pokeImage = $("<img>").attr("src", pokeList[j].sprites.front_default).appendTo($pokemonHolder)
-            //GRABBING POKEMON NAME
-                                    let $pokeName = $("<p>").text(pokeList[j].name.toUpperCase()).appendTo($pokemonHolder)
-                                $($pokemonHolder).appendTo($pokemonWrapper)
-                                }
-            //THEN PLACE THOSE IMAGES INTO BODY USING INITAL VARIABLE
 
-                                $($pokemonWrapper).appendTo("body")
+                                //CREATING OUR POKEMON OUTPUT
+                                const pokeBox = (num) => {
+                                    for (var j = 0; j < num; j++) {
+                                        const $pokeBox = $("<div>").addClass("pokeBox")
+                                        let $pokeImage = $("<img>").attr("src", pokeList[j].sprites.front_default).appendTo($pokeBox)
+                                        //GRABBING POKEMON NAME
+                                        let $pokeName = $("<p>").text(pokeList[j].name.toUpperCase()).appendTo($pokeBox)
+                                        $($pokeBox).appendTo($pokemonWrapper)
+                                    }
+;
+                                }
+                                                                pokeBox(x)
                             }
 
-                        }
-                    )
+                            //THEN PLACE THOSE IMAGES INTO BODY USING INITAL VARIABLE
 
-                }
+                            $($pokemonWrapper).appendTo("body")
+                        }
+
+
+                )
 
             }
 
-
-
-
-            pokemonList();
-
         }
 
-    )
 
 
 
-    $("form").on('submit', () => {
+        pokemonList();
+        divMaker();
+    }
+
+)
 
 
-    })
+
+$("form").on('submit', () => {
+
+
+})
 
 
 })

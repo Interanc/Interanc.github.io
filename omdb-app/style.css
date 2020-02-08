@@ -1,21 +1,33 @@
 body {
-    background-color: #F5F5F;
-    margin: 1em;
-    
+    background-color: #F5F5F5;
+    margin: 5em;
+
 }
-.pokeHolder {
+.pokeWrap {
+    height: 50vw;
+    background-color: #CCA420;
     display: flex;
-    justify-content: space-between;
-    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* flex-direction: row; */
 }
 img {
     margin: auto
+    /* display: inline-block; */
 }
-* {
+/* * {
     border: 1px solid black
-}
+} */
 p {
     margin: auto;
-    display: inline-block;
+
     text-align: center:
+}
+.pokeBox {
+    background-color: white;
+    padding: 2px;
+    border: 2px solid black;
+    margin-left: .5em;
+    margin-bottom: .5em;
 }
