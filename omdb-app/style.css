@@ -1,3 +1,21 @@
 body {
     background-color: #F5F5F;
+    margin: 1em;
+    
+}
+.pokeHolder {
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+img {
+    margin: auto
+}
+* {
+    border: 1px solid black
+}
+p {
+    margin: auto;
+    display: inline-block;
+    text-align: center:
 }
