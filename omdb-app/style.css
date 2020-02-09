@@ -31,3 +31,8 @@ p {
     margin-left: .5em;
     margin-bottom: .5em;
 }
+.formWrap {
+    display: block;
+    text-align: center;
+    width: auto;
+}
