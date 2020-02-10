@@ -3,17 +3,20 @@ body {
     margin: 5em;
 
 }
-.pokeWrap {
-    height: 50vw;
+.amiiboWrap {
+    height: auto;
+    padding-top: 1em;
     background-color: #CCA420;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     /* justify-content: space-between; */
     /* flex-direction: row; */
+
 }
 img {
-    margin: auto
+    margin: auto;
+    height: 6em;
     /* display: inline-block; */
 }
 /* * {
@@ -24,7 +27,7 @@ p {
 
     text-align: center:
 }
-.pokeBox {
+.amiiboBox {
     background-color: white;
     padding: 2px;
     border: 2px solid black;
