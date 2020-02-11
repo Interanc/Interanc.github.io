@@ -28,6 +28,7 @@ p {
     text-align: center:
 }
 .amiiboBox {
+    display: flex;
     background-color: white;
     padding: 2px;
     border: 2px solid black;
@@ -38,4 +39,8 @@ p {
     display: block;
     text-align: center;
     width: auto;
+}
+
+.infoTable, tr, th {
+    border: 1px solid black;
 }
