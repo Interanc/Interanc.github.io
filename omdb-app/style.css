@@ -1,16 +1,28 @@
 body {
-    background-color: #F5F5F5;
+    background-image: url(https://vignette3.wikia.nocookie.net/supermariogalaxy/images/5/50/Wiki-background/revision/latest?cb=20150227215012);
+    /* background-color: #F5F5F5; */
     margin: 5em;
 
 }
 .headerTitle {
     text-align: center;
-    
+    color: white;
+}
+.backgroundImage {
+
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 .amiiboWrap {
     height: auto;
+
     padding-top: 1em;
-    background-color: #CCA420;
+    /* background-color: #CCA420; */
+    border: 1px solid white;
+    margin-top: 2em;
+    border-radius: 1em;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -33,16 +45,19 @@ p {
 }
 .amiiboBox {
     display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 2px;
     border: 2px solid black;
     margin-left: .5em;
     margin-bottom: .5em;
+    border-radius: 1em;
 }
 .formWrap {
     display: block;
     text-align: center;
     width: auto;
+
 }
 
 .infoTable, tr, th {
