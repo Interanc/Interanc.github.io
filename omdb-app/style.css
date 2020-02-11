@@ -3,6 +3,10 @@ body {
     margin: 5em;
 
 }
+.headerTitle {
+    text-align: center;
+    
+}
 .amiiboWrap {
     height: auto;
     padding-top: 1em;

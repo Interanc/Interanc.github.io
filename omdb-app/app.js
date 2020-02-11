@@ -22,7 +22,7 @@ $(() => {
                             let $amiiboName = $("<p>").text(amiiboArray[0][j].character).appendTo($amiiboBox)
                             let $amiiboCounter = $("<p>").text(j)
                             $($amiiboBox).on("click", () => {
-                                $amiiboBox.prependTo("body")
+                                $amiiboBox.prependTo(".amiiboPage")
                                 j = $($amiiboCounter).text();
                                 let $amiiboTable = $("<table>").appendTo($amiiboBox).addClass("infoTable")
                                 let $amiiboSeriesHolder = $("<tr>").appendTo($amiiboTable)
@@ -46,7 +46,7 @@ $(() => {
                             $($amiiboBox).appendTo($amiiboWrapper)
 
                         }
-                        $($amiiboWrapper).appendTo("body")
+                        $($amiiboWrapper).appendTo(".amiiboPage")
 
 
             }
