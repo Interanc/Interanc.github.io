@@ -1,11 +1,33 @@
 console.log($);
 $(() => {
-    // pokemonList();
     // $("form").on('submit', (event) => {
     // event.preventDefault();
     let amiiboArray = []
     let $amiiboWrapper = $("<div>").addClass("amiiboWrap")
     let $amiiboHolder = $("<div>").addClass("amiiboHolder")
+
+    // Variables ===============
+    const $openBtn = $('#amiiboModalopen');
+    const $modal = $('#modal');
+    const $closeBtn = $('#close');
+
+    // Event Handlers ===============
+    const openModal = () => {
+        $modal.css('display', 'block');
+    }
+
+    const closeModal = () => {
+        $modal.css('display', 'none');
+    }
+
+    // Event Listeners ===============
+    $openBtn.on('click', openModal);
+    $closeBtn.on('click', closeModal);
+
+
+    $('form').on('submit', (event) => {
+        event.preventDefault();
+        $('.amiiboWrap').empty()
     $.ajax({
         url:'https://www.amiiboapi.com/api/amiibo'
     }).then(
@@ -14,12 +36,28 @@ $(() => {
             // let $amiiboImg = $("<img>").attr("src", data.amiibo[0].image).appendTo("body")
 
             const amiiboList = () => {
-                amiiboArray.push(data.amiibo)
+                                amiiboArray.push(data.amiibo)
+                let userInput = $('input[type="text"]').val();
+                console.log(userInput);
+
+
                 console.log(amiiboArray[0][0]);
                 for (var j = 0; j < amiiboArray[0].length; j++) {
                     const $amiiboBox = $("<div>").addClass("amiiboBox")
-                    let $amiiboImage = $("<img>").attr("src", amiiboArray[0][j].image).appendTo($amiiboBox)
-                    let $amiiboName = $("<p>").text(amiiboArray[0][j].character).appendTo($amiiboBox)
+                    let $amiiboImage = $("<img>").attr("src", amiiboArray[0][j].image).addClass("amiiboImageBox")
+                    let $amiiboName = $("<p>").text(amiiboArray[0][j].character)
+                    if (amiiboArray[0][j].character === `${userInput}`) {
+$amiiboImage.appendTo($amiiboBox)
+$amiiboName.appendTo($amiiboBox)
+$($amiiboBox).appendTo($amiiboWrapper)
+
+}
+else if (userInput === '') {
+    $amiiboImage.appendTo($amiiboBox)
+    $amiiboName.appendTo($amiiboBox)
+    $($amiiboBox).appendTo($amiiboWrapper)
+
+}
                     let $amiiboCounter = $("<p>").text(j)
                     $($amiiboBox).on("click", () => {
                         $amiiboBox.prependTo(".amiiboPage")
@@ -34,6 +72,9 @@ $(() => {
                         let $amiiboReleaseDateHolder = $("<tr>").appendTo($amiiboTable)
                         let $amiiboReleaseDateTitle = $("<th>").text("Release Date ").appendTo($amiiboReleaseDateHolder)
                         let $amiiboReleaseDate = $("<th>").text(amiiboArray[0][j].release.na).appendTo($amiiboReleaseDateHolder)
+                        let $amiiboTypeHolder = $("<tr>").appendTo($amiiboTable)
+                        let $amiiboTypeTitle = $("<th>").text("Type  ").appendTo($amiiboTypeHolder)
+                        let $amiiboType = $("<th>").text(amiiboArray[0][j].type).appendTo($amiiboTypeHolder)
                         let $amiiboTableImage = $("<tr>").appendTo($amiiboTable)
                         let $amiiboSeriesImage = $("<th>").text("Image ").appendTo($amiiboTableImage)
                         let $amiiboImagePlacer = $("<th>").appendTo($amiiboTableImage)
@@ -43,7 +84,6 @@ $(() => {
                             $amiiboBox.prependTo($amiiboWrapper)
                         })
                     })
-                    $($amiiboBox).appendTo($amiiboWrapper)
 
                 }
                 $($amiiboWrapper).appendTo(".amiiboPage")
@@ -51,6 +91,8 @@ $(() => {
 
             }
             amiiboList();
+            })
+            // amiiboList();
 
 
 
