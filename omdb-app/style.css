@@ -151,6 +151,9 @@ p {
     width: auto;
 
 }
+.typeSelector {
+    margin-left: auto;
+}
 
 .infoTable, th {
     border: 3px solid black;
