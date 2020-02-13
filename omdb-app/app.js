@@ -3,7 +3,10 @@ $(() => {
     let amiiboArray = []
     let $amiiboWrapper = $("<div>").addClass("amiiboWrap")
     let $amiiboHolder = $("<div>").addClass("amiiboHolder")
-
+    // let $figure = $("select.Figure")
+    // let $card = $("select.Card")
+    // let $yarn = $("select.Yarn")
+    // $(".typeSelector option")
     // Variables ===============
     const $openBtn = $('#amiiboModalopen');
     const $modal = $('#modal');
@@ -22,9 +25,10 @@ $(() => {
     $openBtn.on('click', openModal);
     $closeBtn.on('click', closeModal);
 
-
     $('form').on('submit', (event) => {
         event.preventDefault();
+        let $type = $(".typeSelector")[0].options.selectedIndex
+        let typeConverter = ""
         $('.amiiboWrap').empty()
         $.ajax({
             url:'https://www.amiiboapi.com/api/amiibo'
@@ -44,17 +48,29 @@ $(() => {
                     console.log(userInput);
                     //for loop to create our amiibos
                     for (var j = 0; j < amiiboArray[0].length; j++) {
+
+                        //Added in Filter Function
+                        if ($type === 1) {
+                            typeConverter = "Figure"
+                        }else if ($type === 2) {
+                            typeConverter = "Card"
+                        }else if ($type === 3) {
+                            typeConverter = "Yarn"
+                        }else if ($type === 0) {
+                            typeConverter = amiiboArray[0][j].type
+                        }
+                        console.log(typeConverter);
                         const $amiiboBox = $("<div>").addClass("amiiboBox")
                         let $amiiboImage = $("<img>").attr("src", amiiboArray[0][j].image).addClass("amiiboImageBox")
                         let $amiiboName = $("<p>").text(amiiboArray[0][j].character)
                         //search functionality
-                        if (amiiboArray[0][j].character === `${userInput}`) {
+                        if (amiiboArray[0][j].character === `${userInput}` && amiiboArray[0][j].type === typeConverter) {
                             $amiiboImage.appendTo($amiiboBox)
                             $amiiboName.appendTo($amiiboBox)
                             $($amiiboBox).appendTo($amiiboWrapper)
 
                         }
-                        else if (userInput === '') {
+                        else if (userInput === '' && amiiboArray[0][j].type === typeConverter) {
                             $amiiboImage.appendTo($amiiboBox)
                             $amiiboName.appendTo($amiiboBox)
                             $($amiiboBox).appendTo($amiiboWrapper)
@@ -94,6 +110,7 @@ $(() => {
                                     $(".infoTable").remove()
                                     $amiiboBox.prependTo($amiiboWrapper)
                                 })
+
                             })
 
                         }
@@ -102,6 +119,9 @@ $(() => {
 
                     }
                     amiiboList();
+                    //DEV TO SEE HOW MANY HITS YOU GET
+                    console.log(`RETRIEVED ${$(".amiiboBox").length} RESULTS ! ! !`);
+
                 })
 
 
@@ -113,5 +133,7 @@ $(() => {
 
 
                 ;
+
             })
+
         })
