@@ -23,6 +23,9 @@ Cannot click a button twice, but if you regenerate the page you can use it the s
 LINKS AND CREDITS:
 
 Link: [Project Link](https://interanc.github.io/omdb-app/)
+
 API Used: https://www.amiiboapi.com/
+
 Project Markdown: https://git.generalassemb.ly/Software-Engineering-Immersive-Remote/SEIR-Waverider/blob/master/projects/project1.md
+
 Used Animista to generate Title Animation: https://animista.net/
