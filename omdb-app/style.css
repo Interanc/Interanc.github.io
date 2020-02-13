@@ -54,7 +54,7 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
 }
-/* Modal =============== */
+
 #modal {
     background-color: rgba(255,255,255,0.4);
     position: fixed;
@@ -81,7 +81,7 @@ body {
     transform: scale(2);
 }
 
-/* Modal Textbox =============== */
+
 #modal-textbox{
     background-color: white;
     height: 350px;
@@ -98,7 +98,6 @@ h2 {
     text-align: center;
 }
 
-/* Modal Footer =============== */
 #modal-footer {
     text-align: center;
     padding-top: 3em;

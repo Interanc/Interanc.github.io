@@ -3,16 +3,13 @@ $(() => {
     let amiiboArray = []
     let $amiiboWrapper = $("<div>").addClass("amiiboWrap")
     let $amiiboHolder = $("<div>").addClass("amiiboHolder")
-    // let $figure = $("select.Figure")
-    // let $card = $("select.Card")
-    // let $yarn = $("select.Yarn")
-    // $(".typeSelector option")
-    // Variables ===============
+
+    //Modal
     const $openBtn = $('#amiiboModalopen');
     const $modal = $('#modal');
     const $closeBtn = $('#close');
 
-    // Event Handlers ===============
+
     const openModal = () => {
         $modal.css('display', 'block');
     }
@@ -21,9 +18,9 @@ $(() => {
         $modal.css('display', 'none');
     }
 
-    // Event Listeners ===============
     $openBtn.on('click', openModal);
     $closeBtn.on('click', closeModal);
+
 
     $('form').on('submit', (event) => {
         event.preventDefault();
