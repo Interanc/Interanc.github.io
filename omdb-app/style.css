@@ -11,6 +11,41 @@ body {
     font-weight: 900;
     font-style: italic;
     font-size: 3em;
+    -webkit-animation: text-pop-up-top 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
+    animation: text-pop-up-top 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
+}
+/* Title Animation */
+@-webkit-keyframes text-pop-up-top {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: none;
+    }
+    100% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+@keyframes text-pop-up-top {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: none;
+    }
+    100% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+    }
 }
 .backgroundImage {
 
@@ -19,51 +54,44 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
 }
-.styleBox {
-    /* border: 1px solid white; */
-    border-radius: 5px;
-}
 /* Modal =============== */
 #modal {
-	background-color: rgba(255,255,255,0.4);
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	z-index: 1;
-	overflow: auto;
-	display: none;
+    background-color: rgba(255,255,255,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    display: none;
 }
 
 .modal-buttons {
-	padding: 14px 18px;
-	background-color: #677996;
-	border: none;
-	outline: none;
-	border-radius: 3px;
-	color: white;
-	font-family: 'Arial';
-	cursor: pointer;
+    padding: 14px 18px;
+    background-color: #677996;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    color: white;
+    font-family: 'Arial';
+    cursor: pointer;
 }
 .modal-buttons:hover {
     transform: scale(2);
 }
-#amiiboModalopen {
-    /* align-items: center; */
-}
 
 /* Modal Textbox =============== */
 #modal-textbox{
-	background-color: white;
-	height: 350px;
-	width: 550px;
-	border-radius: 2px;
-	margin: 150px auto;
-	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-	padding: 2%;
-	line-height: 120%;
-	font-family: Arial;
+    background-color: white;
+    height: 350px;
+    width: 550px;
+    border-radius: 2px;
+    margin: 150px auto;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    padding: 2%;
+    line-height: 120%;
+    font-family: Arial;
     align-items: center;
 }
 h2 {
@@ -72,41 +100,34 @@ h2 {
 
 /* Modal Footer =============== */
 #modal-footer {
-	text-align: center;
+    text-align: center;
     padding-top: 3em;
 }
+/* Amiibo Holder */
 .amiiboWrap {
     height: auto;
     background-color: rgba(255,255,255,0.3);
     padding-top: 1em;
-    /* background-color: #CCA420; */
     border: 1px solid white;
-    /* margin-top: 1em; */
-    /* border-radius: 1em; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    /* justify-content: space-between; */
-    /* flex-direction: row; */
 
 }
+
+/* Amiibo Images */
 .amiiboImageBox {
     margin: auto;
     height: 8vw;
-    /* display: inline-block; */
 }
 
-img {
-
-}
-/* * {
-    border: 1px solid black
-} */
+/* Table Text */
 p {
     margin: auto;
 
     text-align: center:
 }
+/* Amiibo Buttons */
 .amiiboBox {
     display: flex;
     flex-direction: column;
@@ -131,24 +152,26 @@ p {
 
 }
 
-.infoTable, tr, th {
-    border: 1px solid black;
+.infoTable, th {
+    border: 3px solid black;
 }
+
 .search {
     border: 1px solid grey;
-border-radius: 5px;
-height: 20px;
-width: 100%;
-text-align: center;
-padding: 2px 0px 2px 0px;
-outline: 0;
-background-color: white;
-margin-bottom: 1em;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 2px 0px 2px 0px;
+    outline: 0;
+    background-color: white;
+    margin-bottom: 1em;
 }
+/* Search Bar Animation */
 .search:hover, .search:focus {
-  border: 1.5px solid #009688;
-  background-color: white;
-  transform: scale(3);
+    border: 1.5px solid #009688;
+    background-color: white;
+    transform: scale(3);
 }
 
 .submitButton {
