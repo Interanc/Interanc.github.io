@@ -1,4 +1,4 @@
-console.log($);
+// console.log($);
 $(() => {
     // $("form").on('submit', (event) => {
     // event.preventDefault();
@@ -59,7 +59,8 @@ else if (userInput === '') {
 
 }
                     let $amiiboCounter = $("<p>").text(j)
-                    $($amiiboBox).on("click", () => {
+                    let $amiiboBoxes = $('.amiiboBox')
+                    $amiiboBox.on("click", () => {
                         $amiiboBox.prependTo(".amiiboPage")
                         j = $($amiiboCounter).text();
                         let $amiiboTable = $("<table>").appendTo($amiiboBox).addClass("infoTable")
@@ -75,11 +76,16 @@ else if (userInput === '') {
                         let $amiiboTypeHolder = $("<tr>").appendTo($amiiboTable)
                         let $amiiboTypeTitle = $("<th>").text("Type  ").appendTo($amiiboTypeHolder)
                         let $amiiboType = $("<th>").text(amiiboArray[0][j].type).appendTo($amiiboTypeHolder)
+                        let $amiiboSearchHolder = $("<tr>").appendTo($amiiboTable)
+                        let $amiiboSearchTitle = $("<th>").text("Search  ").appendTo($amiiboSearchHolder)
+                        let $amiiboSearch = $("<th>").appendTo($amiiboSearchHolder)
+                        let $purchaseLink = $("<a>").text("Google Search").attr({href: `https://www.google.com/searchbyimage?site=search&sa=X&image_url=${amiiboArray[0][j].image}`, target: "_blank" }).appendTo($amiiboSearch)
                         let $amiiboTableImage = $("<tr>").appendTo($amiiboTable)
                         let $amiiboSeriesImage = $("<th>").text("Image ").appendTo($amiiboTableImage)
                         let $amiiboImagePlacer = $("<th>").appendTo($amiiboTableImage)
                         let $amiiboBigImage = $("<img>").attr("src", amiiboArray[0][j].image).appendTo($amiiboImagePlacer)
                         $($amiiboBox).on("click", () => {
+
                             $(".infoTable").empty()
                             $amiiboBox.prependTo($amiiboWrapper)
                         })
