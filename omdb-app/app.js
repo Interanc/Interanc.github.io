@@ -42,7 +42,7 @@ $(() => {
                     //cleaning user input
                     let userInput1 = $('input[type="text"]').val();
                     let userInput = formatResponse(userInput1)
-                    console.log(userInput);
+                    // console.log(userInput);
                     //for loop to create our amiibos
                     for (var j = 0; j < amiiboArray[0].length; j++) {
 
@@ -56,7 +56,7 @@ $(() => {
                         }else if ($type === 0) {
                             typeConverter = amiiboArray[0][j].type
                         }
-                        console.log(typeConverter);
+                        // console.log(typeConverter);
                         const $amiiboBox = $("<div>").addClass("amiiboBox")
                         let $amiiboImage = $("<img>").attr("src", amiiboArray[0][j].image).addClass("amiiboImageBox")
                         let $amiiboName = $("<p>").text(amiiboArray[0][j].character)
