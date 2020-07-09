@@ -77,10 +77,10 @@ $(() => {
                         let $amiiboCounter = $("<p>").text(j)
                         let $amiiboBoxes = $('.amiiboBox')
                         $amiiboBox.on("click", () => {
-                            $amiiboBox.prependTo(".amiiboPage")
+                            $amiiboBox.appendTo($amiiboBox).prependTo(".amiiboPage")
                             //bypass invoke and call to have my tables be made off the same number from the for loop
                             j = $($amiiboCounter).text();
-                            let $amiiboTable = $("<table>").appendTo($amiiboBox).addClass("infoTable")
+                            let $amiiboTable = $("<table>").addClass("infoTable")
                             let $amiiboSeriesHolder = $("<tr>").appendTo($amiiboTable)
                             let $amiiboSeriesTitle = $("<th>").text("Amiibo Series ").appendTo($amiiboSeriesHolder)
                             let $amiiboSeries = $("<th>").text(amiiboArray[0][j].amiiboSeries).appendTo($amiiboSeriesHolder)
@@ -104,8 +104,13 @@ $(() => {
                                 //clearing the tabl
                                 $($amiiboBox).on("click", () => {
 
-                                    $(".infoTable").remove()
+                                    $(".infoTable").hide()
                                     $amiiboBox.prependTo($amiiboWrapper)
+                                    // $(".infoTable").empty()
+                                    $($amiiboBox).on("click", () => {
+                                        $amiiboBox.prependTo(".amiiboPage")
+                                        $(".infoTable").show()
+                                    })
                                 })
 
                             })
