@@ -32,6 +32,35 @@ $(() => {
         }).then(
             (data) => {
 
+                const createInfoBox = (j) => {
+                    let $amiiboCounter = $("<p>").text(j)
+                    j = $($amiiboCounter).text();
+
+
+                    let $amiiboTable = $("<table>").addClass("infoTable").appendTo($amiiboBox).css('visibility', 'hidden')
+                    let $amiiboSeriesHolder = $("<tr>").appendTo($amiiboTable)
+                    let $amiiboSeriesTitle = $("<th>").text("Amiibo Series ").appendTo($amiiboSeriesHolder)
+                    let $amiiboSeries = $("<th>").text(amiiboArray[0][j].amiiboSeries).appendTo($amiiboSeriesHolder)
+                    let $amiiboGameSeriesHolder = $("<tr>").appendTo($amiiboTable)
+                    let $amiiboGameSeriesTitle = $("<th>").text("Game Series  ").appendTo($amiiboGameSeriesHolder)
+                    let $amiiboGameSeries = $("<th>").text(amiiboArray[0][j].gameSeries).appendTo($amiiboGameSeriesHolder)
+                    let $amiiboReleaseDateHolder = $("<tr>").appendTo($amiiboTable)
+                    let $amiiboReleaseDateTitle = $("<th>").text("Release Date ").appendTo($amiiboReleaseDateHolder)
+                    let $amiiboReleaseDate = $("<th>").text(amiiboArray[0][j].release.na).appendTo($amiiboReleaseDateHolder)
+                    let $amiiboTypeHolder = $("<tr>").appendTo($amiiboTable)
+                    let $amiiboTypeTitle = $("<th>").text("Type  ").appendTo($amiiboTypeHolder)
+                    let $amiiboType = $("<th>").text(amiiboArray[0][j].type).appendTo($amiiboTypeHolder)
+                    let $amiiboSearchHolder = $("<tr>").appendTo($amiiboTable)
+                    let $amiiboSearchTitle = $("<th>").text("Search  ").appendTo($amiiboSearchHolder)
+                    let $amiiboSearch = $("<th>").appendTo($amiiboSearchHolder)
+                    let $purchaseLink = $("<a>").text("Google Search").attr({href: `https://www.google.com/searchbyimage?site=search&sa=X&image_url=${amiiboArray[0][j].image}`, target: "_blank" }).appendTo($amiiboSearch)
+                        let $amiiboTableImage = $("<tr>").appendTo($amiiboTable)
+                        let $amiiboSeriesImage = $("<th>").text("Image ").appendTo($amiiboTableImage)
+                        let $amiiboImagePlacer = $("<th>").appendTo($amiiboTableImage)
+                        let $amiiboBigImage = $("<img>").attr("src", amiiboArray[0][j].image).appendTo($amiiboImagePlacer)
+
+                }
+
                 const amiiboList = () => {
                     //convert text into Text
                     const formatResponse = (response) => {
@@ -42,7 +71,6 @@ $(() => {
                     //cleaning user input
                     let userInput1 = $('input[type="text"]').val();
                     let userInput = formatResponse(userInput1)
-                    // console.log(userInput);
                     //for loop to create our amiibos
                     for (var j = 0; j < amiiboArray[0].length; j++) {
 
@@ -56,61 +84,48 @@ $(() => {
                         }else if ($type === 0) {
                             typeConverter = amiiboArray[0][j].type
                         }
-                        // console.log(typeConverter);
                         const $amiiboBox = $("<div>").addClass("amiiboBox")
                         let $amiiboImage = $("<img>").attr("src", amiiboArray[0][j].image).addClass("amiiboImageBox")
                         let $amiiboName = $("<p>").text(amiiboArray[0][j].character)
+
+
                         //search functionality
                         if (amiiboArray[0][j].character === `${userInput}` && amiiboArray[0][j].type === typeConverter) {
                             $amiiboImage.appendTo($amiiboBox)
                             $amiiboName.appendTo($amiiboBox)
                             $($amiiboBox).appendTo($amiiboWrapper)
-
+                            createInfoBox(j)
                         }
                         else if (userInput === '' && amiiboArray[0][j].type === typeConverter) {
                             $amiiboImage.appendTo($amiiboBox)
                             $amiiboName.appendTo($amiiboBox)
                             $($amiiboBox).appendTo($amiiboWrapper)
-
+                            createInfoBox(j)
                         }
+
                         //setting up a counter bypass to go into onclick
-                        let $amiiboCounter = $("<p>").text(j)
                         let $amiiboBoxes = $('.amiiboBox')
                         $amiiboBox.on("click", () => {
                             $amiiboBox.appendTo($amiiboBox).prependTo(".amiiboPage")
                             //bypass invoke and call to have my tables be made off the same number from the for loop
-                            j = $($amiiboCounter).text();
-                            let $amiiboTable = $("<table>").addClass("infoTable").appendTo($amiiboBox)
-                            let $amiiboSeriesHolder = $("<tr>").appendTo($amiiboTable)
-                            let $amiiboSeriesTitle = $("<th>").text("Amiibo Series ").appendTo($amiiboSeriesHolder)
-                            let $amiiboSeries = $("<th>").text(amiiboArray[0][j].amiiboSeries).appendTo($amiiboSeriesHolder)
-                            let $amiiboGameSeriesHolder = $("<tr>").appendTo($amiiboTable)
-                            let $amiiboGameSeriesTitle = $("<th>").text("Game Series  ").appendTo($amiiboGameSeriesHolder)
-                            let $amiiboGameSeries = $("<th>").text(amiiboArray[0][j].gameSeries).appendTo($amiiboGameSeriesHolder)
-                            let $amiiboReleaseDateHolder = $("<tr>").appendTo($amiiboTable)
-                            let $amiiboReleaseDateTitle = $("<th>").text("Release Date ").appendTo($amiiboReleaseDateHolder)
-                            let $amiiboReleaseDate = $("<th>").text(amiiboArray[0][j].release.na).appendTo($amiiboReleaseDateHolder)
-                            let $amiiboTypeHolder = $("<tr>").appendTo($amiiboTable)
-                            let $amiiboTypeTitle = $("<th>").text("Type  ").appendTo($amiiboTypeHolder)
-                            let $amiiboType = $("<th>").text(amiiboArray[0][j].type).appendTo($amiiboTypeHolder)
-                            let $amiiboSearchHolder = $("<tr>").appendTo($amiiboTable)
-                            let $amiiboSearchTitle = $("<th>").text("Search  ").appendTo($amiiboSearchHolder)
-                            let $amiiboSearch = $("<th>").appendTo($amiiboSearchHolder)
-                            let $purchaseLink = $("<a>").text("Google Search").attr({href: `https://www.google.com/searchbyimage?site=search&sa=X&image_url=${amiiboArray[0][j].image}`, target: "_blank" }).appendTo($amiiboSearch)
-                                let $amiiboTableImage = $("<tr>").appendTo($amiiboTable)
-                                let $amiiboSeriesImage = $("<th>").text("Image ").appendTo($amiiboTableImage)
-                                let $amiiboImagePlacer = $("<th>").appendTo($amiiboTableImage)
-                                let $amiiboBigImage = $("<img>").attr("src", amiiboArray[0][j].image).appendTo($amiiboImagePlacer)
+                            
                                 //clearing the tabl
                                 $($amiiboBox).on("click", () => {
 
+                                    
+                                    if ($(".infoTable").css('visibility', 'hidden')){
+                                    $amiiboBox.prependTo(".amiiboPage")
+                                    $(".infoTable").css('visibility', 'visible')
+                                    }
+                                    else{
                                     $(".infoTable").hide()
                                     $amiiboBox.prependTo($amiiboWrapper)
-                                    $(".infoTable").remove()
-                                    $($amiiboBox).on("click", () => {
-                                        $amiiboBox.prependTo(".amiiboPage")
-                                        $(".infoTable").show()
-                                    })
+                                    }
+                                    // $(".infoTable").remove()
+                                    // $($amiiboBox).on("click", () => {
+                                    //     $amiiboBox.prependTo(".amiiboPage")
+                                    //     $(".infoTable").show()
+                                    // })
                                 })
 
                             })
