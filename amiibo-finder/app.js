@@ -32,24 +32,24 @@ $(() => {
         }).then(
             (data) => {
 
-                const createInfoBox = (j) => {
+                const createInfoBox = (j, $amiiboBox) => {
                     let $amiiboCounter = $("<p>").text(j)
-                    j = $($amiiboCounter).text();
+                    x = $($amiiboCounter).text();
 
 
-                    let $amiiboTable = $("<table>").addClass("infoTable").appendTo($amiiboBox).css('visibility', 'hidden')
+                    let $amiiboTable = $("<table>").addClass(`infoTable${j}`).appendTo($amiiboBox).css('display', 'none')
                     let $amiiboSeriesHolder = $("<tr>").appendTo($amiiboTable)
                     let $amiiboSeriesTitle = $("<th>").text("Amiibo Series ").appendTo($amiiboSeriesHolder)
-                    let $amiiboSeries = $("<th>").text(amiiboArray[0][j].amiiboSeries).appendTo($amiiboSeriesHolder)
+                    let $amiiboSeries = $("<th>").text(amiiboArray[0][x].amiiboSeries).appendTo($amiiboSeriesHolder)
                     let $amiiboGameSeriesHolder = $("<tr>").appendTo($amiiboTable)
                     let $amiiboGameSeriesTitle = $("<th>").text("Game Series  ").appendTo($amiiboGameSeriesHolder)
-                    let $amiiboGameSeries = $("<th>").text(amiiboArray[0][j].gameSeries).appendTo($amiiboGameSeriesHolder)
+                    let $amiiboGameSeries = $("<th>").text(amiiboArray[0][x].gameSeries).appendTo($amiiboGameSeriesHolder)
                     let $amiiboReleaseDateHolder = $("<tr>").appendTo($amiiboTable)
                     let $amiiboReleaseDateTitle = $("<th>").text("Release Date ").appendTo($amiiboReleaseDateHolder)
-                    let $amiiboReleaseDate = $("<th>").text(amiiboArray[0][j].release.na).appendTo($amiiboReleaseDateHolder)
+                    let $amiiboReleaseDate = $("<th>").text(amiiboArray[0][x].release.na).appendTo($amiiboReleaseDateHolder)
                     let $amiiboTypeHolder = $("<tr>").appendTo($amiiboTable)
                     let $amiiboTypeTitle = $("<th>").text("Type  ").appendTo($amiiboTypeHolder)
-                    let $amiiboType = $("<th>").text(amiiboArray[0][j].type).appendTo($amiiboTypeHolder)
+                    let $amiiboType = $("<th>").text(amiiboArray[0][x].type).appendTo($amiiboTypeHolder)
                     let $amiiboSearchHolder = $("<tr>").appendTo($amiiboTable)
                     let $amiiboSearchTitle = $("<th>").text("Search  ").appendTo($amiiboSearchHolder)
                     let $amiiboSearch = $("<th>").appendTo($amiiboSearchHolder)
@@ -57,7 +57,7 @@ $(() => {
                         let $amiiboTableImage = $("<tr>").appendTo($amiiboTable)
                         let $amiiboSeriesImage = $("<th>").text("Image ").appendTo($amiiboTableImage)
                         let $amiiboImagePlacer = $("<th>").appendTo($amiiboTableImage)
-                        let $amiiboBigImage = $("<img>").attr("src", amiiboArray[0][j].image).appendTo($amiiboImagePlacer)
+                        let $amiiboBigImage = $("<img>").attr("src", amiiboArray[0][x].image).appendTo($amiiboImagePlacer)
 
                 }
 
@@ -93,64 +93,39 @@ $(() => {
                         if (amiiboArray[0][j].character === `${userInput}` && amiiboArray[0][j].type === typeConverter) {
                             $amiiboImage.appendTo($amiiboBox)
                             $amiiboName.appendTo($amiiboBox)
+                            createInfoBox(j, $amiiboBox)
                             $($amiiboBox).appendTo($amiiboWrapper)
-                            createInfoBox(j)
+                            
                         }
                         else if (userInput === '' && amiiboArray[0][j].type === typeConverter) {
                             $amiiboImage.appendTo($amiiboBox)
                             $amiiboName.appendTo($amiiboBox)
-                            $($amiiboBox).appendTo($amiiboWrapper)
-                            createInfoBox(j)
+                            createInfoBox(j, $amiiboBox)
+                            $($amiiboBox).addClass("amiibobox").appendTo($amiiboWrapper)
+                            
                         }
 
                         //setting up a counter bypass to go into onclick
                         let $amiiboBoxes = $('.amiiboBox')
                         $amiiboBox.on("click", () => {
                             $amiiboBox.appendTo($amiiboBox).prependTo(".amiiboPage")
-                            //bypass invoke and call to have my tables be made off the same number from the for loop
-                            
-                                //clearing the tabl
-                                $($amiiboBox).on("click", () => {
 
-                                    
-                                    if ($(".infoTable").css('visibility', 'hidden')){
-                                    $amiiboBox.prependTo(".amiiboPage")
-                                    $(".infoTable").css('visibility', 'visible')
-                                    }
-                                    else{
-                                    $(".infoTable").hide()
-                                    $amiiboBox.prependTo($amiiboWrapper)
-                                    }
-                                    // $(".infoTable").remove()
-                                    // $($amiiboBox).on("click", () => {
-                                    //     $amiiboBox.prependTo(".amiiboPage")
-                                    //     $(".infoTable").show()
-                                    // })
+                            $(`.${$amiiboBox.children('table').attr('class')}`).toggle()
+                                //clearing the tabl
+                                $($amiiboBox.infoTable).on("click", () => {
+
                                 })
 
                             })
 
                         }
                         $($amiiboWrapper).appendTo(".amiiboPage")
-
-
                     }
                     amiiboList();
                     //DEV TO SEE HOW MANY HITS YOU GET
                     console.log(`RETRIEVED ${$(".amiiboBox").length} RESULTS ! ! !`);
-
                 })
-
-
-
-
-
-
-
-
-
                 ;
-
             })
 
         })

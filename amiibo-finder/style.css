@@ -151,6 +151,10 @@ p {
 
 .infoTable, th {
     border: 3px solid black;
+   
+}
+.infoTable {
+    display: none;
 }
 .visible { 
     visibility: visible;
