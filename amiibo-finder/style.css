@@ -121,6 +121,9 @@ p {
 
     text-align: center:
 }
+h1 {
+    color: white;
+}
 /* Amiibo Buttons */
 .amiiboBox {
     display: flex;
@@ -151,6 +154,10 @@ p {
 
 .infoTable, th {
     border: 3px solid black;
+   
+}
+.infoTable {
+    display: none;
 }
 .visible { 
     visibility: visible;
@@ -179,4 +186,8 @@ p {
 
 .submitButton {
     margin-bottom: 1em;
+}
+
+.resultsInfo {
+    text-align: center;
 }
