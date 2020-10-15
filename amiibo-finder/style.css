@@ -121,6 +121,9 @@ p {
 
     text-align: center:
 }
+h1 {
+    color: white;
+}
 /* Amiibo Buttons */
 .amiiboBox {
     display: flex;
@@ -183,4 +186,8 @@ p {
 
 .submitButton {
     margin-bottom: 1em;
+}
+
+.resultsInfo {
+    text-align: center;
 }
