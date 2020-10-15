@@ -152,6 +152,12 @@ p {
 .infoTable, th {
     border: 3px solid black;
 }
+.visible { 
+    visibility: visible;
+}
+.hidden {
+    visibility: hidden;
+}
 
 .search {
     border: 1px solid grey;
