@@ -131,6 +131,8 @@ $(() => {
 
                     }
                     amiiboList();
+                    //adding comment here to see if i can provoke a bigger push since the url isnt updating properly
+                    // yep!
                 })
                 ;
             })
