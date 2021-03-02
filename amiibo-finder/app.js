@@ -62,7 +62,7 @@ $(() => {
         let typeConverter = ""
         $('.amiiboWrap').empty()
         $.ajax({
-            url:'https://amiiboapi.com/api/amiibo/'
+            url:'https://amiiboapi.com/api/amiibo'
         }).then(
             (data) => {
                 setTimeout(results, 100)
