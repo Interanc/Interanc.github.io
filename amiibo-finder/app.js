@@ -62,7 +62,7 @@ $(() => {
         let typeConverter = ""
         $('.amiiboWrap').empty()
         $.ajax({
-            url:'https://www.amiiboapi.com/api/amiibo'
+            url:'https://amiiboapi.com/api/amiibo/'
         }).then(
             (data) => {
                 setTimeout(results, 100)
@@ -101,14 +101,14 @@ $(() => {
                             $amiiboName.appendTo($amiiboBox)
                             createInfoBox(j, $amiiboBox)
                             $($amiiboBox).appendTo($amiiboWrapper)
-                            
+
                         }
                         else if (userInput === '' && amiiboArray[0][j].type === typeConverter) {
                             $amiiboImage.appendTo($amiiboBox)
                             $amiiboName.appendTo($amiiboBox)
                             createInfoBox(j, $amiiboBox)
                             $($amiiboBox).addClass("amiibobox").appendTo($amiiboWrapper)
-                            
+
                         }
 
                         //Store an amiiboBox in amiiboBoxes
@@ -118,17 +118,17 @@ $(() => {
                             // Bigger view of the amiibo and info
                             $amiiboBox.appendTo($amiiboBox).prependTo(".amiiboPage")
                             $(`.${$amiiboBox.children('table').attr('class')}`).toggle()
-                            
+
                                 //clearing the table and putting it back into the wrapper
                                 $($amiiboBox).on("click", () => {
-                                    $amiiboBox.prependTo($amiiboWrapper) 
+                                    $amiiboBox.prependTo($amiiboWrapper)
                                 })
 
                             })
 
                         }
                         $($amiiboWrapper).appendTo(".amiiboPage")
-                        
+
                     }
                     amiiboList();
                 })
